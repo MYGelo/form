@@ -1,12 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FORM</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <style>
+      .step {
+        display: none;
+      }
+
+      .progress-container {
+        height: 8px;
+        background: #eee;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: #4caf50;
+        transition: width 0.3s;
+      }
+    </style>
+    <div class="form-wrapper">
+      <div class="progress-container">
+        <div class="progress-bar" style="width: 0%"></div>
+      </div>
+
+      <form id="quiz-form">
+        <div class="step" data-step="0">
+          <p>Какой твой любимый цвет?</p>
+          <button type="button" data-answer="red" data-next-step="1">
+            Красный
+          </button>
+          <button type="button" data-answer="blue" data-next-step="2">
+            Синий
+          </button>
+        </div>
+
+        <div class="step" data-step="1">
+          <p>Ты любишь яблоки?</p>
+          <button type="button" data-answer="yes" data-next-step="3">Да</button>
+          <button type="button" data-answer="no" data-next-step="3">Нет</button>
+        </div>
+
+        <div class="step" data-step="2">
+          <p>Тебе нравится море?</p>
+          <button type="button" data-answer="yes" data-next-step="4">Да</button>
+          <button type="button" data-answer="no" data-next-step="4">Нет</button>
+        </div>
+
+        <div class="step" data-step="10">
+          <p>Спасибо! Готово 🎉</p>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      class MultiStepForm {
+        constructor(formSelector) {
+          this.form = document.querySelector(formSelector);
+          this.steps = [...this.form.querySelectorAll(".step")];
+          this.progressBar = document.querySelector(".progress-bar");
+          this.currentStepIndex = 0;
+          this.formData = {};
+          this.totalSteps = 11;
+
+          this.init();
+        }
+
+        init() {
+          this.showStep(this.currentStepIndex);
+          this.form.addEventListener("click", (e) => this.handleClick(e));
+        }
+
+        showStep(index) {
+          this.steps.forEach((step) => (step.style.display = "none"));
+          const targetStep = this.form.querySelector(`[data-step="${index}"]`);
+          if (targetStep) targetStep.style.display = "block";
+          this.updateProgress(index);
+        }
+
+        updateProgress(currentIndex) {
+          const progress = ((currentIndex + 1) / this.totalSteps) * 100;
+          this.progressBar.style.width = `${progress}%`;
+        }
+
+        handleClick(e) {
+          if (e.target.matches("button[data-next-step]")) {
+            const answer = e.target.dataset.answer;
+            const nextStep = parseInt(e.target.dataset.nextStep);
+
+            this.formData[`step_${this.currentStepIndex}`] = answer;
+            this.currentStepIndex = nextStep;
+
+            this.showStep(this.currentStepIndex);
+            console.log("formData:", this.formData);
+          }
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        new MultiStepForm("#quiz-form");
+      });
+    </script>
+  </body>
 </html>
