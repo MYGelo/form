@@ -1,0 +1,11 @@
+body {
+    background: transparent linear-gradient(180deg, #271B46 0%, #090120 100%) 0% 0% no-repeat padding-box;
+    padding: 150px 0;
+}
+
+.container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}

@@ -5,59 +5,187 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FORM</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/form.css" />
   </head>
   <body>
-    <style>
-      .step {
-        display: none;
-      }
+    <div class="container">
+      <div class="multi-form">
+        <form id="form">
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 0%"></div>
+          </div>
 
-      .progress-container {
-        height: 8px;
-        background: #eee;
-        margin-bottom: 20px;
-        border-radius: 4px;
-        overflow: hidden;
-      }
+          <div class="step" data-step="1">
+            <h2>Whats your birth year?</h2>
+            <div class="events">
+              <button type="button" data-answer="over 50" data-next-step="2.5">
+                over 50
+              </button>
+              <button type="button" data-answer="under 50" data-next-step="2">
+                under 50
+              </button>
+            </div>
+          </div>
 
-      .progress-bar {
-        height: 100%;
-        background: #4caf50;
-        transition: width 0.3s;
-      }
-    </style>
-    <div class="form-wrapper">
-      <div class="progress-container">
-        <div class="progress-bar" style="width: 0%"></div>
+          <div class="step" data-step="2">
+            <h2>Have you been diagnosed with any active cancer?</h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="6">
+                yes
+              </button>
+
+              <button type="button" data-answer="now sure" data-next-step="3">
+                now sure
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="3">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="2.5">
+            <h2>Have you been told you have high PSA levels?</h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="6">
+                yes
+              </button>
+
+              <button type="button" data-answer="now sure" data-next-step="2">
+                now sure
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="2">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="3">
+            <h2>
+              Have you been diagnosed with a blood disorder that increases
+              clotting risk?
+            </h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="6">
+                yes
+              </button>
+
+              <button type="button" data-answer="now sure" data-next-step="4">
+                now sure
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="4">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="4">
+            <h2>
+              Have you beed diagnosed with a blood disorder that increases
+              clotting risk? (2)
+            </h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="6">
+                yes
+              </button>
+
+              <button type="button" data-answer="now sure" data-next-step="5">
+                now sure
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="5">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="5">
+            <h2>
+              Has your doctor ever advised against testosterone treatment?
+            </h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="6">
+                yes
+              </button>
+
+              <button type="button" data-answer="now sure" data-next-step="99">
+                now sure
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="99">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="6">
+            <h2>
+              Are you taking any medications for chest pain or heart problems,
+              like nitroglycerin?
+            </h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="10">
+                yes
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="8">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="8">
+            <h2>
+              Has a doctor ever told you that sex could be unsafe for your
+              heart?
+            </h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="10">
+                yes
+              </button>
+
+              <button type="button" data-answer="no" data-next-step="9">
+                no
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="9">
+            <h2>
+              The RTR Treatment may not be safe for you at this time, you should
+              talk to your doctor. Try our Romance Boosted solutions instead.
+            </h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="11">
+                ok
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="10">
+            <h2>
+              The TRT Treatment may not be safe for you. Please consult your
+              physician.
+            </h2>
+          </div>
+
+          <div class="step" data-step="11">
+            <h2>ED Treatment</h2>
+            <div class="events">
+              <button type="button" data-answer="yes" data-next-step="99">
+                ok
+              </button>
+            </div>
+          </div>
+
+          <div class="step" data-step="99">
+            <h2>Checkout</h2>
+          </div>
+        </form>
       </div>
-
-      <form id="quiz-form">
-        <div class="step" data-step="0">
-          <p>Какой твой любимый цвет?</p>
-          <button type="button" data-answer="red" data-next-step="1">
-            Красный
-          </button>
-          <button type="button" data-answer="blue" data-next-step="2">
-            Синий
-          </button>
-        </div>
-
-        <div class="step" data-step="1">
-          <p>Ты любишь яблоки?</p>
-          <button type="button" data-answer="yes" data-next-step="3">Да</button>
-          <button type="button" data-answer="no" data-next-step="3">Нет</button>
-        </div>
-
-        <div class="step" data-step="2">
-          <p>Тебе нравится море?</p>
-          <button type="button" data-answer="yes" data-next-step="4">Да</button>
-          <button type="button" data-answer="no" data-next-step="4">Нет</button>
-        </div>
-
-        <div class="step" data-step="10">
-          <p>Спасибо! Готово 🎉</p>
-        </div>
-      </form>
     </div>
 
     <script>
@@ -66,7 +194,7 @@
           this.form = document.querySelector(formSelector);
           this.steps = [...this.form.querySelectorAll(".step")];
           this.progressBar = document.querySelector(".progress-bar");
-          this.currentStepIndex = 0;
+          this.currentStepIndex = 1;
           this.formData = {};
           this.totalSteps = 11;
 
@@ -81,7 +209,9 @@
         showStep(index) {
           this.steps.forEach((step) => (step.style.display = "none"));
           const targetStep = this.form.querySelector(`[data-step="${index}"]`);
+
           if (targetStep) targetStep.style.display = "block";
+
           this.updateProgress(index);
         }
 
@@ -105,7 +235,7 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        new MultiStepForm("#quiz-form");
+        new MultiStepForm("#form");
       });
     </script>
   </body>
